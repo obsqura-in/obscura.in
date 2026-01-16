@@ -1,9 +1,13 @@
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
+import aboutBackground from "@/assets/about-background.png";
 
 const About = () => {
   return (
-    <div className="min-h-screen bg-background">
+    <div 
+      className="min-h-screen bg-background bg-cover bg-center bg-fixed"
+      style={{ backgroundImage: `url(${aboutBackground})` }}
+    >
       <Navigation />
       
       <main className="pt-32 pb-24">
