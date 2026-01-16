@@ -44,30 +44,30 @@ const FeaturedCollection = ({ items }: FeaturedCollectionProps) => {
           {items.map((item, index) => (
             <div
               key={item.id}
-              className="group cursor-pointer"
-              style={{ animationDelay: `${index * 0.1}s` }}
+              className="group cursor-pointer opacity-0 animate-slide-up"
+              style={{ animationDelay: `${0.2 + index * 0.15}s` }}
             >
               <div className="relative aspect-[3/4] overflow-hidden bg-card mb-6 hover-glow">
                 <img
                   src={item.image}
                   alt={item.name}
-                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                  className="w-full h-full object-cover transition-transform duration-1000 ease-elegant group-hover:scale-110"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-background/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                <div className="absolute inset-0 bg-gradient-to-t from-background/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700 ease-elegant" />
               </div>
               
               <div className="text-center">
-                <p className="font-body text-xs tracking-[0.2em] uppercase text-muted-foreground mb-2">
+                <p className="font-body text-xs tracking-[0.2em] uppercase text-muted-foreground mb-2 transition-colors duration-500">
                   {item.category}
                 </p>
-                <h3 className="font-display text-xl text-foreground group-hover:text-primary transition-colors duration-300 mb-4">
+                <h3 className="font-display text-xl text-foreground group-hover:text-primary transition-colors duration-500 ease-elegant mb-4">
                   {item.name}
                 </h3>
                 <Button
                   variant="hero"
                   size="sm"
                   onClick={() => handleAddToCart(item)}
-                  className="w-full"
+                  className="w-full transition-all duration-500 ease-elegant hover:scale-[1.02]"
                 >
                   Add to Cart
                 </Button>

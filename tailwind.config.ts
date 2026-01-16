@@ -66,27 +66,47 @@ export default {
       },
       keyframes: {
         "accordion-down": {
-          from: { height: "0" },
-          to: { height: "var(--radix-accordion-content-height)" },
+          from: { height: "0", opacity: "0" },
+          to: { height: "var(--radix-accordion-content-height)", opacity: "1" },
         },
         "accordion-up": {
-          from: { height: "var(--radix-accordion-content-height)" },
-          to: { height: "0" },
+          from: { height: "var(--radix-accordion-content-height)", opacity: "1" },
+          to: { height: "0", opacity: "0" },
         },
         "fade-in": {
           from: { opacity: "0" },
           to: { opacity: "1" },
         },
         "slide-up": {
-          from: { opacity: "0", transform: "translateY(20px)" },
+          from: { opacity: "0", transform: "translateY(30px)" },
           to: { opacity: "1", transform: "translateY(0)" },
+        },
+        "scale-in": {
+          from: { opacity: "0", transform: "scale(0.95)" },
+          to: { opacity: "1", transform: "scale(1)" },
+        },
+        "slide-in-right": {
+          from: { opacity: "0", transform: "translateX(20px)" },
+          to: { opacity: "1", transform: "translateX(0)" },
         },
       },
       animation: {
-        "accordion-down": "accordion-down 0.2s ease-out",
-        "accordion-up": "accordion-up 0.2s ease-out",
-        "fade-in": "fade-in 0.6s ease-out forwards",
-        "slide-up": "slide-up 0.8s ease-out forwards",
+        "accordion-down": "accordion-down 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94)",
+        "accordion-up": "accordion-up 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94)",
+        "fade-in": "fade-in 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards",
+        "slide-up": "slide-up 1s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards",
+        "scale-in": "scale-in 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards",
+        "slide-in-right": "slide-in-right 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards",
+      },
+      transitionTimingFunction: {
+        "elegant": "cubic-bezier(0.25, 0.46, 0.45, 0.94)",
+        "smooth": "cubic-bezier(0.4, 0, 0.2, 1)",
+      },
+      transitionDuration: {
+        "400": "400ms",
+        "600": "600ms",
+        "800": "800ms",
+        "1000": "1000ms",
       },
     },
   },

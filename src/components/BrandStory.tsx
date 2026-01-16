@@ -10,17 +10,17 @@ const BrandStory = ({ storyImage }: BrandStoryProps) => {
       <div className="container mx-auto px-6 lg:px-12">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-24 items-center">
           {/* Image */}
-          <div className="relative aspect-[4/5] overflow-hidden hover-glow">
+          <div className="relative aspect-[4/5] overflow-hidden hover-glow opacity-0 animate-slide-up" style={{ animationDelay: "0.2s" }}>
             <img
               src={storyImage}
               alt="Jewelry craftsmanship"
-              className="w-full h-full object-cover"
+              className="w-full h-full object-cover transition-transform duration-1000 ease-elegant hover:scale-105"
             />
-            <div className="absolute inset-0 border border-primary/20" />
+            <div className="absolute inset-0 border border-primary/20 transition-colors duration-700" />
           </div>
 
           {/* Content */}
-          <div className="lg:pl-8">
+          <div className="lg:pl-8 opacity-0 animate-slide-up" style={{ animationDelay: "0.4s" }}>
             <p className="font-body text-xs tracking-[0.4em] uppercase text-primary mb-6">
               Our Philosophy
             </p>
@@ -33,7 +33,7 @@ const BrandStory = ({ storyImage }: BrandStoryProps) => {
             
             <div className="space-y-6 text-muted-foreground font-body leading-relaxed">
               <p>
-                At Obxcura, we believe that true beauty lies in the obscure—the 
+                At OBSQURA, we believe that true beauty lies in the obscure—the 
                 hidden details that reveal themselves only to those who look deeper. 
                 Each piece is a meditation on contrast: the interplay of darkness 
                 and brilliance, tradition and innovation.
@@ -47,11 +47,11 @@ const BrandStory = ({ storyImage }: BrandStoryProps) => {
             </div>
 
             <div className="mt-10 flex items-center gap-8">
-              <Button variant="hero" size="lg">
+              <Button variant="hero" size="lg" className="transition-all duration-500 ease-elegant hover:scale-105">
                 Discover Our Atelier
               </Button>
               
-              <div className="h-px flex-1 bg-border max-w-24" />
+              <div className="h-px flex-1 bg-border max-w-24 transition-all duration-700" />
               
               <span className="font-display text-4xl text-primary">Est. 2024</span>
             </div>
