@@ -21,7 +21,9 @@ const Hero = ({
         }}>
             Where Mystery
             <br />
-            <span className="italic text-gradient-gold">Meets Elegance</span>
+            <span className="italic text-gradient-gold">Meets Elegance
+
+          </span>
           </h1>
           
           
