@@ -20,9 +20,6 @@ const Hero = ({ heroImage }: HeroProps) => {
       {/* Content */}
       <div className="relative z-10 container mx-auto px-6 lg:px-12 text-center">
         <div className="max-w-4xl mx-auto">
-          <p className="font-body text-xs tracking-[0.4em] uppercase text-primary mb-6 opacity-0 animate-slide-up" style={{ animationDelay: "0.3s" }}>
-            Artisanal Jewelry
-          </p>
           
           <h1 className="font-display text-5xl md:text-7xl lg:text-8xl font-light text-foreground mb-8 opacity-0 animate-slide-up" style={{ animationDelay: "0.5s" }}>
             Where Mystery
