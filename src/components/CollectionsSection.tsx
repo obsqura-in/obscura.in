@@ -1,12 +1,18 @@
 import { Link } from "react-router-dom";
+import categoryRings from "@/assets/category-rings.jpg";
+import categoryNecklaces from "@/assets/category-necklaces.jpg";
+import categoryBracelets from "@/assets/category-bracelets.jpg";
+import categoryEarrings from "@/assets/category-earrings.jpg";
+import categorySets from "@/assets/category-sets.jpg";
+import categorySpecials from "@/assets/category-specials.jpg";
 
 const categories = [
-  { name: "Rings", slug: "rings", description: "Elegant statements for your fingers" },
-  { name: "Necklaces", slug: "necklaces", description: "Grace that adorns your neckline" },
-  { name: "Bracelets", slug: "bracelets", description: "Timeless elegance for your wrist" },
-  { name: "Earrings", slug: "earrings", description: "Delicate whispers of luxury" },
-  { name: "Sets", slug: "sets", description: "Curated collections of harmony" },
-  { name: "Obsqura Specials", slug: "specials", description: "Exclusive limited editions" },
+  { name: "Rings", slug: "rings", description: "Elegant statements for your fingers", image: categoryRings },
+  { name: "Necklaces", slug: "necklaces", description: "Grace that adorns your neckline", image: categoryNecklaces },
+  { name: "Bracelets", slug: "bracelets", description: "Timeless elegance for your wrist", image: categoryBracelets },
+  { name: "Earrings", slug: "earrings", description: "Delicate whispers of luxury", image: categoryEarrings },
+  { name: "Sets", slug: "sets", description: "Curated collections of harmony", image: categorySets },
+  { name: "Obsqura Specials", slug: "specials", description: "Exclusive limited editions", image: categorySpecials },
 ];
 
 const CollectionsSection = () => {
@@ -29,16 +35,27 @@ const CollectionsSection = () => {
             <Link
               key={category.slug}
               to={`/collections/${category.slug}`}
-              className="group relative p-8 lg:p-10 border border-border bg-background hover:border-primary transition-all duration-500 hover-glow"
+              className="group relative overflow-hidden border border-border bg-background hover:border-primary transition-all duration-500 hover-glow"
             >
-              <div className="flex flex-col items-center text-center">
-                <h3 className="font-display text-2xl lg:text-3xl text-foreground group-hover:text-primary transition-colors duration-300 mb-3">
+              {/* Cover Image */}
+              <div className="aspect-[4/3] overflow-hidden">
+                <img
+                  src={category.image}
+                  alt={category.name}
+                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-background via-background/50 to-transparent" />
+              </div>
+              
+              {/* Content Overlay */}
+              <div className="absolute bottom-0 left-0 right-0 p-6 lg:p-8">
+                <h3 className="font-display text-2xl lg:text-3xl text-foreground group-hover:text-primary transition-colors duration-300 mb-2">
                   {category.name}
                 </h3>
                 <p className="font-body text-sm text-muted-foreground">
                   {category.description}
                 </p>
-                <div className="mt-6 font-body text-xs tracking-[0.2em] uppercase text-primary opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                <div className="mt-4 font-body text-xs tracking-[0.2em] uppercase text-primary opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                   View Collection →
                 </div>
               </div>

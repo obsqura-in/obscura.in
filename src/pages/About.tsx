@@ -1,6 +1,5 @@
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
-import { Mail, Phone, Instagram } from "lucide-react";
 
 const About = () => {
   return (
@@ -21,7 +20,7 @@ const About = () => {
 
           {/* Content */}
           <div className="max-w-3xl mx-auto">
-            <div className="prose prose-invert mx-auto mb-16">
+            <div className="prose prose-invert mx-auto">
               <p className="font-body text-lg text-muted-foreground leading-relaxed mb-8">
                 OBSQURA is a luxury jewelry brand that celebrates the beauty of mystery and elegance. 
                 Each piece in our collection is meticulously crafted to transcend time, telling stories 
@@ -32,41 +31,6 @@ const About = () => {
                 becomes a treasured heirloom for generations to come. We believe in the power of 
                 exceptional craftsmanship and the enduring allure of fine jewelry.
               </p>
-            </div>
-
-            {/* Contact Details */}
-            <div className="border border-border p-8 lg:p-12">
-              <h2 className="font-display text-2xl text-foreground mb-8 text-center">
-                Get in Touch
-              </h2>
-              
-              <div className="space-y-6">
-                <a
-                  href="mailto:obsqura.in@gmail.com"
-                  className="flex items-center gap-4 text-muted-foreground hover:text-primary transition-colors duration-300"
-                >
-                  <Mail size={20} className="text-primary" />
-                  <span className="font-body">obsqura.in@gmail.com</span>
-                </a>
-                
-                <a
-                  href="tel:9892082068"
-                  className="flex items-center gap-4 text-muted-foreground hover:text-primary transition-colors duration-300"
-                >
-                  <Phone size={20} className="text-primary" />
-                  <span className="font-body">9892082068</span>
-                </a>
-                
-                <a
-                  href="https://instagram.com/Obsqura.in"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center gap-4 text-muted-foreground hover:text-primary transition-colors duration-300"
-                >
-                  <Instagram size={20} className="text-primary" />
-                  <span className="font-body">@Obsqura.in</span>
-                </a>
-              </div>
             </div>
           </div>
         </div>

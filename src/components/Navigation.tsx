@@ -9,6 +9,7 @@ const Navigation = () => {
   const navLinks = [
     { name: "Login", href: "/login" },
     { name: "About", href: "/about" },
+    { name: "Contact", href: "/contact" },
     { name: "Jewellery Care Guide", href: "/jewellery-care" },
   ];
 
