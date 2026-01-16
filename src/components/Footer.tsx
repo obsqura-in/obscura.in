@@ -1,8 +1,6 @@
 import { Instagram, Facebook, Mail } from "lucide-react";
-
 const Footer = () => {
-  return (
-    <footer id="contact" className="py-16 lg:py-24 bg-background border-t border-border">
+  return <footer id="contact" className="py-16 lg:py-24 bg-background border-t border-border">
       <div className="container mx-auto px-6 lg:px-12">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-8 mb-16">
           {/* Brand */}
@@ -22,16 +20,11 @@ const Footer = () => {
               Explore
             </h4>
             <ul className="space-y-4">
-              {["Collections", "New Arrivals", "Bespoke", "Gift Cards"].map((link) => (
-                <li key={link}>
-                  <a
-                    href="#"
-                    className="font-body text-sm text-muted-foreground hover:text-primary transition-colors duration-300"
-                  >
+              {["Collections", "New Arrivals", "Bespoke", "Gift Cards"].map(link => <li key={link}>
+                  <a href="#" className="font-body text-sm text-muted-foreground hover:text-primary transition-colors duration-300">
                     {link}
                   </a>
-                </li>
-              ))}
+                </li>)}
             </ul>
           </div>
 
@@ -42,31 +35,21 @@ const Footer = () => {
             </h4>
             <ul className="space-y-4">
               <li>
-                <a
-                  href="mailto:obsqura.in@gmail.com"
-                  className="font-body text-sm text-muted-foreground hover:text-primary transition-colors duration-300"
-                >
+                <a href="mailto:obsqura.in@gmail.com" className="font-body text-sm text-muted-foreground hover:text-primary transition-colors duration-300">
                   obsqura.in@gmail.com
                 </a>
               </li>
               <li>
                 <p className="font-body text-sm text-muted-foreground">
-                  By Appointment Only
-                </p>
+              </p>
               </li>
             </ul>
             
             {/* Social Icons */}
             <div className="flex items-center gap-4 mt-6">
-              {[Instagram, Facebook, Mail].map((Icon, index) => (
-                <a
-                  key={index}
-                  href="#"
-                  className="w-10 h-10 border border-border flex items-center justify-center text-muted-foreground hover:border-primary hover:text-primary transition-all duration-300"
-                >
+              {[Instagram, Facebook, Mail].map((Icon, index) => <a key={index} href="#" className="w-10 h-10 border border-border flex items-center justify-center text-muted-foreground hover:border-primary hover:text-primary transition-all duration-300">
                   <Icon size={18} />
-                </a>
-              ))}
+                </a>)}
             </div>
           </div>
         </div>
@@ -77,20 +60,12 @@ const Footer = () => {
             © 2024 OBSQURA. All rights reserved.
           </p>
           <div className="flex items-center gap-8">
-            {["Privacy Policy", "Terms of Service", "Shipping"].map((link) => (
-              <a
-                key={link}
-                href="#"
-                className="font-body text-xs text-muted-foreground hover:text-primary transition-colors duration-300"
-              >
+            {["Privacy Policy", "Terms of Service", "Shipping"].map(link => <a key={link} href="#" className="font-body text-xs text-muted-foreground hover:text-primary transition-colors duration-300">
                 {link}
-              </a>
-            ))}
+              </a>)}
           </div>
         </div>
       </div>
-    </footer>
-  );
+    </footer>;
 };
-
 export default Footer;
