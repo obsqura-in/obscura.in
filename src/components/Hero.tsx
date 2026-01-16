@@ -1,5 +1,4 @@
 import { Button } from "@/components/ui/button";
-import { ArrowDown } from "lucide-react";
 
 interface HeroProps {
   heroImage: string;
@@ -37,22 +36,16 @@ const Hero = ({ heroImage }: HeroProps) => {
           </p>
 
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4 opacity-0 animate-slide-up" style={{ animationDelay: "0.8s" }}>
-            <Button variant="hero" size="xl">
-              Explore Collection
-            </Button>
+            <a href="#collections">
+              <Button variant="hero" size="xl">
+                Explore Collection
+              </Button>
+            </a>
             <Button variant="minimal" size="lg">
               Our Story
             </Button>
           </div>
         </div>
-      </div>
-
-      {/* Scroll Indicator */}
-      <div className="absolute bottom-12 left-1/2 -translate-x-1/2 opacity-0 animate-slide-up" style={{ animationDelay: "1s" }}>
-        <a href="#collections" className="flex flex-col items-center text-muted-foreground hover:text-primary transition-colors duration-300">
-          <span className="font-body text-xs tracking-[0.2em] uppercase mb-3">Discover</span>
-          <ArrowDown size={20} className="animate-bounce" />
-        </a>
       </div>
     </section>
   );

@@ -1,4 +1,6 @@
 import { Button } from "@/components/ui/button";
+import { useCart } from "@/contexts/CartContext";
+import { toast } from "sonner";
 
 interface CollectionItem {
   id: number;
@@ -12,8 +14,20 @@ interface FeaturedCollectionProps {
 }
 
 const FeaturedCollection = ({ items }: FeaturedCollectionProps) => {
+  const { addToCart } = useCart();
+
+  const handleAddToCart = (item: CollectionItem) => {
+    addToCart({
+      id: item.id,
+      name: item.name,
+      category: item.category,
+      image: item.image,
+    });
+    toast.success(`${item.name} added to cart`);
+  };
+
   return (
-    <section id="collections" className="py-24 lg:py-32 bg-background">
+    <section className="py-24 lg:py-32 bg-background">
       <div className="container mx-auto px-6 lg:px-12">
         {/* Section Header */}
         <div className="text-center mb-16 lg:mb-24">
@@ -40,32 +54,26 @@ const FeaturedCollection = ({ items }: FeaturedCollectionProps) => {
                   className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-background/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-                
-                {/* Hover Content */}
-                <div className="absolute bottom-0 left-0 right-0 p-6 translate-y-4 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-500">
-                  <Button variant="hero" size="sm" className="w-full">
-                    View Details
-                  </Button>
-                </div>
               </div>
               
               <div className="text-center">
                 <p className="font-body text-xs tracking-[0.2em] uppercase text-muted-foreground mb-2">
                   {item.category}
                 </p>
-                <h3 className="font-display text-xl text-foreground group-hover:text-primary transition-colors duration-300">
+                <h3 className="font-display text-xl text-foreground group-hover:text-primary transition-colors duration-300 mb-4">
                   {item.name}
                 </h3>
+                <Button
+                  variant="hero"
+                  size="sm"
+                  onClick={() => handleAddToCart(item)}
+                  className="w-full"
+                >
+                  Add to Cart
+                </Button>
               </div>
             </div>
           ))}
-        </div>
-
-        {/* View All Button */}
-        <div className="text-center mt-16">
-          <Button variant="luxe" size="xl">
-            View All Collections
-          </Button>
         </div>
       </div>
     </section>

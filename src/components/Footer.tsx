@@ -8,7 +8,7 @@ const Footer = () => {
           {/* Brand */}
           <div className="lg:col-span-2">
             <h3 className="font-display text-2xl tracking-[0.3em] text-foreground mb-6">
-              OBXCURA
+              OBSQURA
             </h3>
             <p className="font-body text-muted-foreground max-w-sm leading-relaxed">
               Where mystery meets elegance. Handcrafted luxury jewelry for those 
@@ -43,10 +43,10 @@ const Footer = () => {
             <ul className="space-y-4">
               <li>
                 <a
-                  href="mailto:hello@obxcura.com"
+                  href="mailto:obsqura.in@gmail.com"
                   className="font-body text-sm text-muted-foreground hover:text-primary transition-colors duration-300"
                 >
-                  hello@obxcura.com
+                  obsqura.in@gmail.com
                 </a>
               </li>
               <li>
@@ -74,7 +74,7 @@ const Footer = () => {
         {/* Bottom Bar */}
         <div className="pt-8 border-t border-border flex flex-col md:flex-row items-center justify-between gap-4">
           <p className="font-body text-xs text-muted-foreground tracking-wider">
-            © 2024 Obxcura. All rights reserved.
+            © 2024 OBSQURA. All rights reserved.
           </p>
           <div className="flex items-center gap-8">
             {["Privacy Policy", "Terms of Service", "Shipping"].map((link) => (

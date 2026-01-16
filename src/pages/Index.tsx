@@ -1,5 +1,6 @@
 import Navigation from "@/components/Navigation";
 import Hero from "@/components/Hero";
+import CollectionsSection from "@/components/CollectionsSection";
 import FeaturedCollection from "@/components/FeaturedCollection";
 import BrandStory from "@/components/BrandStory";
 import Footer from "@/components/Footer";
@@ -36,6 +37,7 @@ const Index = () => {
     <div className="min-h-screen bg-background">
       <Navigation />
       <Hero heroImage={heroImage} />
+      <CollectionsSection />
       <FeaturedCollection items={collectionItems} />
       <BrandStory storyImage={storyImage} />
       <Footer />
