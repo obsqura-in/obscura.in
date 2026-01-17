@@ -66,7 +66,7 @@ const Index = () => {
   return (
     <div className="min-h-screen bg-background">
       <Navigation />
-      <Hero heroImage={heroImage} />
+      <Hero />
       <FeaturedCollection items={collectionItems} />
       <CollectionsSection />
       <BrandStory storyImage={storyImage} />
