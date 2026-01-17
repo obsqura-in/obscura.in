@@ -30,6 +30,36 @@ const collectionItems = [
     category: "Earrings",
     image: earringsImage,
   },
+  {
+    id: 4,
+    name: "Golden Infinity Bracelet",
+    category: "Bracelets",
+    image: ringImage,
+  },
+  {
+    id: 5,
+    name: "Celestial Chain Necklace",
+    category: "Necklaces",
+    image: necklaceImage,
+  },
+  {
+    id: 6,
+    name: "Aurora Stud Earrings",
+    category: "Earrings",
+    image: earringsImage,
+  },
+  {
+    id: 7,
+    name: "Twilight Band Ring",
+    category: "Rings",
+    image: ringImage,
+  },
+  {
+    id: 8,
+    name: "Obsqura Signature Set",
+    category: "Sets",
+    image: necklaceImage,
+  },
 ];
 
 const Index = () => {
@@ -37,8 +67,8 @@ const Index = () => {
     <div className="min-h-screen bg-background">
       <Navigation />
       <Hero heroImage={heroImage} />
-      <CollectionsSection />
       <FeaturedCollection items={collectionItems} />
+      <CollectionsSection />
       <BrandStory storyImage={storyImage} />
       <Footer />
     </div>

@@ -37,13 +37,15 @@ const Hero = ({
           animationDelay: "0.9s"
         }}>
             <a href="#collections">
-              <Button variant="hero" size="xl" className="transition-all duration-500 ease-elegant hover:scale-105">
+              <Button variant="hero" size="default" className="transition-all duration-500 ease-elegant hover:scale-105">
                 Explore Collection
               </Button>
             </a>
-            <Button variant="minimal" size="lg" className="transition-all duration-500 ease-elegant">
-              Our Story
-            </Button>
+            <a href="/our-story">
+              <Button variant="minimal" size="default" className="transition-all duration-500 ease-elegant">
+                Our Story
+              </Button>
+            </a>
           </div>
         </div>
       </div>

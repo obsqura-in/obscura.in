@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Menu, X, LogOut } from "lucide-react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate, useLocation } from "react-router-dom";
 import CartSheet from "@/components/CartSheet";
 import { useAuth } from "@/contexts/AuthContext";
 import { toast } from "sonner";
@@ -10,6 +10,7 @@ const Navigation = () => {
   const [isOpen, setIsOpen] = useState(false);
   const { user, signOut } = useAuth();
   const navigate = useNavigate();
+  const location = useLocation();
 
   const handleSignOut = async () => {
     await signOut();
@@ -18,12 +19,31 @@ const Navigation = () => {
     setIsOpen(false);
   };
 
+  const handleCollectionsClick = (e: React.MouseEvent) => {
+    e.preventDefault();
+    if (location.pathname === "/") {
+      const collectionsSection = document.getElementById("collections");
+      if (collectionsSection) {
+        collectionsSection.scrollIntoView({ behavior: "smooth" });
+      }
+    } else {
+      navigate("/");
+      setTimeout(() => {
+        const collectionsSection = document.getElementById("collections");
+        if (collectionsSection) {
+          collectionsSection.scrollIntoView({ behavior: "smooth" });
+        }
+      }, 100);
+    }
+    setIsOpen(false);
+  };
+
   const navLinks = [
     ...(user 
       ? [] 
       : [{ name: "Login", href: "/login" }]
     ),
-    { name: "About", href: "/about" },
+    { name: "Collections", href: "#collections", onClick: handleCollectionsClick },
     { name: "Contact", href: "/contact" },
     { name: "Jewellery Care Guide", href: "/jewellery-care" },
   ];
@@ -41,13 +61,24 @@ const Navigation = () => {
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center space-x-12">
             {navLinks.map((link) => (
-              <Link
-                key={link.name}
-                to={link.href}
-                className="font-body text-xs tracking-[0.2em] uppercase text-muted-foreground hover:text-primary transition-colors duration-500 link-underline"
-              >
-                {link.name}
-              </Link>
+              link.onClick ? (
+                <a
+                  key={link.name}
+                  href={link.href}
+                  onClick={link.onClick}
+                  className="font-body text-xs tracking-[0.2em] uppercase text-muted-foreground hover:text-primary transition-colors duration-500 link-underline cursor-pointer"
+                >
+                  {link.name}
+                </a>
+              ) : (
+                <Link
+                  key={link.name}
+                  to={link.href}
+                  className="font-body text-xs tracking-[0.2em] uppercase text-muted-foreground hover:text-primary transition-colors duration-500 link-underline"
+                >
+                  {link.name}
+                </Link>
+              )
             ))}
             {user && (
               <button
@@ -78,15 +109,27 @@ const Navigation = () => {
           <div className="py-8 border-t border-border/50">
             <div className="flex flex-col space-y-6">
               {navLinks.map((link, index) => (
-                <Link
-                  key={link.name}
-                  to={link.href}
-                  onClick={() => setIsOpen(false)}
-                  className="font-body text-sm tracking-[0.2em] uppercase text-muted-foreground hover:text-primary transition-all duration-500"
-                  style={{ animationDelay: `${index * 0.1}s` }}
-                >
-                  {link.name}
-                </Link>
+                link.onClick ? (
+                  <a
+                    key={link.name}
+                    href={link.href}
+                    onClick={link.onClick}
+                    className="font-body text-sm tracking-[0.2em] uppercase text-muted-foreground hover:text-primary transition-all duration-500 cursor-pointer"
+                    style={{ animationDelay: `${index * 0.1}s` }}
+                  >
+                    {link.name}
+                  </a>
+                ) : (
+                  <Link
+                    key={link.name}
+                    to={link.href}
+                    onClick={() => setIsOpen(false)}
+                    className="font-body text-sm tracking-[0.2em] uppercase text-muted-foreground hover:text-primary transition-all duration-500"
+                    style={{ animationDelay: `${index * 0.1}s` }}
+                  >
+                    {link.name}
+                  </Link>
+                )
               ))}
               {user && (
                 <button
