@@ -1,7 +1,9 @@
 import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from "@/components/ui/sheet";
 import { Button } from "@/components/ui/button";
-import { ShoppingBag, Minus, Plus, X } from "lucide-react";
+import { Minus, Plus, X } from "lucide-react";
 import { useCart } from "@/contexts/CartContext";
+import { Link } from "react-router-dom";
+import cartBagIcon from "@/assets/cart-bag-icon.png";
 
 const CartSheet = () => {
   const { items, totalItems, updateQuantity, removeFromCart } = useCart();
@@ -10,7 +12,7 @@ const CartSheet = () => {
     <Sheet>
       <SheetTrigger asChild>
         <button className="relative text-foreground hover:text-primary transition-colors duration-300">
-          <ShoppingBag size={22} />
+          <img src={cartBagIcon} alt="Cart" className="w-6 h-6 object-contain" />
           {totalItems > 0 && (
             <span className="absolute -top-2 -right-2 w-5 h-5 bg-primary text-primary-foreground text-xs flex items-center justify-center">
               {totalItems}
@@ -87,9 +89,11 @@ const CartSheet = () => {
           
           {items.length > 0 && (
             <div className="pt-6 border-t border-border mt-auto">
-              <Button variant="hero" size="xl" className="w-full">
-                Proceed to Checkout
-              </Button>
+              <Link to="/checkout">
+                <Button variant="hero" size="xl" className="w-full">
+                  Proceed to Checkout
+                </Button>
+              </Link>
             </div>
           )}
         </div>
