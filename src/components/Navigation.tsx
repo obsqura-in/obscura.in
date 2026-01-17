@@ -4,6 +4,7 @@ import { Link, useNavigate } from "react-router-dom";
 import CartSheet from "@/components/CartSheet";
 import { useAuth } from "@/contexts/AuthContext";
 import { toast } from "sonner";
+import obsquraLogo from "@/assets/obsqura-logo.png";
 
 const Navigation = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -32,7 +33,8 @@ const Navigation = () => {
       <div className="container mx-auto px-6 lg:px-12">
         <div className="flex items-center justify-between h-20">
           {/* Logo */}
-          <Link to="/" className="font-display text-2xl tracking-[0.3em] text-foreground hover:text-primary transition-colors duration-500">
+          <Link to="/" className="flex items-center gap-3 font-display text-2xl tracking-[0.3em] text-foreground hover:text-primary transition-colors duration-500">
+            <img src={obsquraLogo} alt="OBSQURA Logo" className="h-8 w-auto" />
             OBSQURA
           </Link>
 
