@@ -29,18 +29,8 @@ const BrandStory = ({
             </h2>
             
             <div className="space-y-6 text-muted-foreground font-body leading-relaxed">
-              <p>
-                At OBSQURA, we believe that true beauty lies in the obscure—the 
-                hidden details that reveal themselves only to those who look deeper. 
-                Each piece is a meditation on contrast: the interplay of darkness 
-                and brilliance, tradition and innovation.
-              </p>
-              <p>
-                Our artisans work in the quiet hours, when inspiration flows freely 
-                and every hammer stroke carries intention. We source only the rarest 
-                materials, treating each gem as a universe unto itself, waiting to 
-                be discovered.
-              </p>
+              
+              
             </div>
 
             <div className="mt-10 flex items-center gap-8">
