@@ -1,13 +1,27 @@
 import { useState } from "react";
-import { Menu, X } from "lucide-react";
-import { Link } from "react-router-dom";
+import { Menu, X, LogOut } from "lucide-react";
+import { Link, useNavigate } from "react-router-dom";
 import CartSheet from "@/components/CartSheet";
+import { useAuth } from "@/contexts/AuthContext";
+import { toast } from "sonner";
 
 const Navigation = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const { user, signOut } = useAuth();
+  const navigate = useNavigate();
+
+  const handleSignOut = async () => {
+    await signOut();
+    toast.success("You have been signed out.");
+    navigate("/");
+    setIsOpen(false);
+  };
 
   const navLinks = [
-    { name: "Login", href: "/login" },
+    ...(user 
+      ? [] 
+      : [{ name: "Login", href: "/login" }]
+    ),
     { name: "About", href: "/about" },
     { name: "Contact", href: "/contact" },
     { name: "Jewellery Care Guide", href: "/jewellery-care" },
@@ -33,6 +47,15 @@ const Navigation = () => {
                 {link.name}
               </Link>
             ))}
+            {user && (
+              <button
+                onClick={handleSignOut}
+                className="font-body text-xs tracking-[0.2em] uppercase text-muted-foreground hover:text-primary transition-colors duration-500 link-underline flex items-center gap-2"
+              >
+                <LogOut size={14} />
+                Logout
+              </button>
+            )}
             <CartSheet />
           </div>
 
@@ -63,6 +86,15 @@ const Navigation = () => {
                   {link.name}
                 </Link>
               ))}
+              {user && (
+                <button
+                  onClick={handleSignOut}
+                  className="font-body text-sm tracking-[0.2em] uppercase text-muted-foreground hover:text-primary transition-all duration-500 flex items-center gap-2"
+                >
+                  <LogOut size={14} />
+                  Logout
+                </button>
+              )}
             </div>
           </div>
         </div>
