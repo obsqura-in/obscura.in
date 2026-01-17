@@ -1,34 +1,32 @@
 import { Button } from "@/components/ui/button";
-
 interface BrandStoryProps {
   storyImage: string;
 }
-
-const BrandStory = ({ storyImage }: BrandStoryProps) => {
-  return (
-    <section id="story" className="py-24 lg:py-32 bg-card">
+const BrandStory = ({
+  storyImage
+}: BrandStoryProps) => {
+  return <section id="story" className="py-24 lg:py-32 bg-card">
       <div className="container mx-auto px-6 lg:px-12">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-24 items-center">
           {/* Image */}
-          <div className="relative aspect-[4/5] overflow-hidden hover-glow opacity-0 animate-slide-up" style={{ animationDelay: "0.2s" }}>
-            <img
-              src={storyImage}
-              alt="Jewelry craftsmanship"
-              className="w-full h-full object-cover transition-transform duration-1000 ease-elegant hover:scale-105"
-            />
+          <div className="relative aspect-[4/5] overflow-hidden hover-glow opacity-0 animate-slide-up" style={{
+          animationDelay: "0.2s"
+        }}>
+            <img src={storyImage} alt="Jewelry craftsmanship" className="w-full h-full object-cover transition-transform duration-1000 ease-elegant hover:scale-105" />
             <div className="absolute inset-0 border border-primary/20 transition-colors duration-700" />
           </div>
 
           {/* Content */}
-          <div className="lg:pl-8 opacity-0 animate-slide-up" style={{ animationDelay: "0.4s" }}>
+          <div className="lg:pl-8 opacity-0 animate-slide-up" style={{
+          animationDelay: "0.4s"
+        }}>
             <p className="font-body text-xs tracking-[0.4em] uppercase text-primary mb-6">
               Our Philosophy
             </p>
             
-            <h2 className="font-display text-4xl md:text-5xl font-light text-foreground mb-8">
-              Crafted in
-              <br />
-              <span className="italic text-gradient-gold">Shadows & Light</span>
+            <h2 className="font-display text-4xl md:text-5xl font-light text-foreground mb-8">Crafted to make you feel
+Shadows & Light<br />
+              <span className="italic text-gradient-gold">Confident, Composed & Elegant.     </span>
             </h2>
             
             <div className="space-y-6 text-muted-foreground font-body leading-relaxed">
@@ -58,8 +56,6 @@ const BrandStory = ({ storyImage }: BrandStoryProps) => {
           </div>
         </div>
       </div>
-    </section>
-  );
+    </section>;
 };
-
 export default BrandStory;

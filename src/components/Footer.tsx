@@ -19,12 +19,12 @@ const Footer = () => {
 
           {/* Quick Links */}
           <div>
-            <h4 className="font-body text-xs tracking-[0.2em] uppercase text-foreground mb-6">
+            <h4 className="font-body text-xs tracking-[0.2em] uppercase mb-6 text-primary">
               Explore
             </h4>
             <ul className="space-y-4">
               {["Collections", "New Arrivals", "Bespoke", "Gift Cards"].map(link => <li key={link}>
-                  <a href="#" className="font-body text-sm text-muted-foreground hover:text-primary transition-colors duration-300">
+                  <a href="#" className="font-body text-sm transition-colors duration-300 text-secondary-foreground">
                     {link}
                   </a>
                 </li>)}
