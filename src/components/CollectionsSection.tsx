@@ -57,7 +57,7 @@ const CollectionsSection = () => {
               {/* Cover Image */}
               <div className="aspect-[4/3] overflow-hidden">
                 <img src={category.image} alt={category.name} className="w-full h-full object-cover transition-transform duration-1000 ease-elegant group-hover:scale-110" />
-                <div className="absolute inset-0 bg-gradient-to-t from-background via-background/50 to-transparent transition-opacity duration-700 mx-[50px] px-0 mt-[10px] mb-[10px] ml-[50px] mr-[50px]" />
+                <div className="absolute inset-0 bg-gradient-to-t from-background via-background/50 to-transparent transition-opacity duration-700" />
               </div>
               
               {/* Content Overlay */}
