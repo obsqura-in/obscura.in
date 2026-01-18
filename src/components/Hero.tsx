@@ -15,11 +15,18 @@ const Hero = () => {
         <div className="flex flex-col sm:flex-row items-center justify-center gap-4 opacity-0 animate-slide-up" style={{
         animationDelay: "0.5s"
       }}>
-          <a href="#collections">
+          <button
+            onClick={() => {
+              const element = document.getElementById('collections');
+              if (element) {
+                element.scrollIntoView({ behavior: 'smooth' });
+              }
+            }}
+          >
             <Button variant="hero" size="default" className="transition-all duration-500 ease-elegant hover:scale-105">
               Explore Collection
             </Button>
-          </a>
+          </button>
           <a href="/our-story">
             <Button variant="minimal" size="default" className="transition-all duration-500 ease-elegant">
               Our Story

@@ -5,9 +5,7 @@ import { Button } from "@/components/ui/button";
 import { useCart } from "@/contexts/CartContext";
 import { toast } from "sonner";
 
-import ringImage from "@/assets/collection-ring.jpg";
-import necklaceImage from "@/assets/collection-necklace.jpg";
-import earringsImage from "@/assets/collection-earrings.jpg";
+import comingSoonImage from "@/assets/coming-soon-product.png";
 
 const categoryData: Record<string, { title: string; description: string }> = {
   rings: { title: "Rings", description: "Elegant statements for your fingers" },
@@ -20,12 +18,12 @@ const categoryData: Record<string, { title: string; description: string }> = {
 
 // Sample products for each category
 const sampleProducts = [
-  { id: 1, name: "Midnight Obsidian", image: ringImage },
-  { id: 2, name: "Serpentine Dream", image: necklaceImage },
-  { id: 3, name: "Luna Whisper", image: earringsImage },
-  { id: 4, name: "Golden Eclipse", image: ringImage },
-  { id: 5, name: "Celestial Chain", image: necklaceImage },
-  { id: 6, name: "Starlight Drops", image: earringsImage },
+  { id: 101, name: "Midnight Obsidian", price: 2499 },
+  { id: 102, name: "Serpentine Dream", price: 2999 },
+  { id: 103, name: "Luna Whisper", price: 1899 },
+  { id: 104, name: "Golden Eclipse", price: 3299 },
+  { id: 105, name: "Celestial Chain", price: 2799 },
+  { id: 106, name: "Starlight Drops", price: 1599 },
 ];
 
 const Collection = () => {
@@ -37,12 +35,13 @@ const Collection = () => {
     description: "Explore our curated pieces",
   };
 
-  const handleAddToCart = (product: { id: number; name: string; image: string }) => {
+  const handleAddToCart = (product: { id: number; name: string; price: number }) => {
     addToCart({
       id: product.id,
       name: product.name,
       category: categoryInfo.title,
-      image: product.image,
+      image: comingSoonImage,
+      price: product.price,
     });
     toast.success(`${product.name} added to cart`);
   };
@@ -69,7 +68,7 @@ const Collection = () => {
               <div key={product.id} className="group">
                 <div className="relative aspect-[3/4] overflow-hidden bg-card mb-6 hover-glow">
                   <img
-                    src={product.image}
+                    src={comingSoonImage}
                     alt={product.name}
                     className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                   />
@@ -79,9 +78,12 @@ const Collection = () => {
                   <p className="font-body text-xs tracking-[0.2em] uppercase text-muted-foreground mb-2">
                     {categoryInfo.title}
                   </p>
-                  <h3 className="font-display text-xl text-foreground mb-4">
+                  <h3 className="font-display text-xl text-foreground mb-2">
                     {product.name}
                   </h3>
+                  <p className="font-body text-lg text-primary mb-4">
+                    ₹{product.price.toLocaleString('en-IN')}
+                  </p>
                   <Button
                     variant="hero"
                     size="sm"
