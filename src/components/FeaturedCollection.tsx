@@ -7,6 +7,7 @@ interface CollectionItem {
   name: string;
   category: string;
   image: string;
+  price: number;
 }
 
 interface FeaturedCollectionProps {
@@ -22,6 +23,7 @@ const FeaturedCollection = ({ items }: FeaturedCollectionProps) => {
       name: item.name,
       category: item.category,
       image: item.image,
+      price: item.price,
     });
     toast.success(`${item.name} added to cart`);
   };
@@ -60,9 +62,12 @@ const FeaturedCollection = ({ items }: FeaturedCollectionProps) => {
                 <p className="font-body text-[10px] tracking-[0.2em] uppercase text-muted-foreground mb-1 transition-colors duration-500">
                   {item.category}
                 </p>
-                <h3 className="font-display text-sm md:text-base text-foreground group-hover:text-primary transition-colors duration-500 ease-elegant mb-3">
+                <h3 className="font-display text-sm md:text-base text-foreground group-hover:text-primary transition-colors duration-500 ease-elegant mb-1">
                   {item.name}
                 </h3>
+                <p className="font-body text-sm text-primary mb-3">
+                  ₹{item.price.toLocaleString('en-IN')}
+                </p>
                 <Button
                   variant="hero"
                   size="sm"

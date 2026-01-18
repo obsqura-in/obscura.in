@@ -1,6 +1,6 @@
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
-import { Mail, Phone, Instagram } from "lucide-react";
+import { Mail, Instagram } from "lucide-react";
 
 const Contact = () => {
   return (
@@ -33,19 +33,6 @@ const Contact = () => {
                   <div>
                     <p className="font-body text-xs tracking-[0.2em] uppercase text-primary mb-1">Email</p>
                     <span className="font-body text-foreground">obsqura.in@gmail.com</span>
-                  </div>
-                </a>
-                
-                <a
-                  href="tel:9892082068"
-                  className="flex items-center gap-4 text-muted-foreground hover:text-primary transition-colors duration-300 group"
-                >
-                  <div className="w-12 h-12 border border-border flex items-center justify-center group-hover:border-primary transition-colors duration-300">
-                    <Phone size={20} className="text-primary" />
-                  </div>
-                  <div>
-                    <p className="font-body text-xs tracking-[0.2em] uppercase text-primary mb-1">Phone</p>
-                    <span className="font-body text-foreground">9892082068</span>
                   </div>
                 </a>
                 

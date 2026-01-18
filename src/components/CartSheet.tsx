@@ -55,6 +55,9 @@ const CartSheet = () => {
                         <h4 className="font-display text-lg text-foreground">
                           {item.name}
                         </h4>
+                        <p className="font-body text-sm text-primary">
+                          ₹{item.price.toLocaleString('en-IN')}
+                        </p>
                       </div>
                       <button
                         onClick={() => removeFromCart(item.id)}
@@ -88,7 +91,13 @@ const CartSheet = () => {
           )}
           
           {items.length > 0 && (
-            <div className="pt-6 border-t border-border mt-auto">
+            <div className="pt-6 border-t border-border mt-auto space-y-4">
+              <div className="flex justify-between items-center">
+                <span className="font-body text-muted-foreground">Subtotal</span>
+                <span className="font-display text-xl text-foreground">
+                  ₹{items.reduce((sum, item) => sum + item.price * item.quantity, 0).toLocaleString('en-IN')}
+                </span>
+              </div>
               <Link to="/checkout">
                 <Button variant="hero" size="xl" className="w-full">
                   Proceed to Checkout

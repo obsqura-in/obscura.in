@@ -66,6 +66,9 @@ const Checkout = () => {
                         <h4 className="font-display text-lg text-foreground">
                           {item.name}
                         </h4>
+                        <p className="font-body text-sm text-primary">
+                          ₹{item.price.toLocaleString('en-IN')}
+                        </p>
                       </div>
                       <button
                         onClick={() => removeFromCart(item.id)}
@@ -96,10 +99,17 @@ const Checkout = () => {
                 </div>
               ))}
 
-              <div className="pt-4">
-                <p className="font-body text-muted-foreground">
-                  Total Items: <span className="text-foreground">{totalItems}</span>
-                </p>
+              <div className="pt-4 space-y-2">
+                <div className="flex justify-between items-center">
+                  <span className="font-body text-muted-foreground">Total Items</span>
+                  <span className="font-body text-foreground">{totalItems}</span>
+                </div>
+                <div className="flex justify-between items-center pt-2 border-t border-border">
+                  <span className="font-body text-lg text-foreground">Subtotal</span>
+                  <span className="font-display text-2xl text-primary">
+                    ₹{items.reduce((sum, item) => sum + item.price * item.quantity, 0).toLocaleString('en-IN')}
+                  </span>
+                </div>
               </div>
             </div>
 
