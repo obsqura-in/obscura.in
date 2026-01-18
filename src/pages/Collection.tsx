@@ -63,10 +63,10 @@ const Collection = () => {
           </div>
 
           {/* Products Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-12">
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 lg:gap-6">
             {sampleProducts.map((product) => (
               <div key={product.id} className="group">
-                <div className="relative aspect-[3/4] overflow-hidden bg-card mb-6 hover-glow">
+                <div className="relative aspect-[3/4] overflow-hidden bg-card mb-4 hover-glow">
                   <img
                     src={comingSoonImage}
                     alt={product.name}
@@ -75,13 +75,13 @@ const Collection = () => {
                 </div>
                 
                 <div className="text-center">
-                  <p className="font-body text-xs tracking-[0.2em] uppercase text-muted-foreground mb-2">
+                  <p className="font-body text-[10px] tracking-[0.2em] uppercase text-muted-foreground mb-1">
                     {categoryInfo.title}
                   </p>
-                  <h3 className="font-display text-xl text-foreground mb-2">
+                  <h3 className="font-display text-sm md:text-base text-foreground mb-1">
                     {product.name}
                   </h3>
-                  <p className="font-body text-lg text-primary mb-4">
+                  <p className="font-body text-sm text-primary mb-3">
                     ₹{product.price.toLocaleString('en-IN')}
                   </p>
                   <Button
