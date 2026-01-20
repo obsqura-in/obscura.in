@@ -1,4 +1,5 @@
 import { Instagram, Facebook, Mail } from "lucide-react";
+import { Link } from "react-router-dom";
 const Footer = () => {
   return <footer id="contact" className="py-16 lg:py-24 bg-background border-t border-border">
       <div className="container mx-auto px-6 lg:px-12">
@@ -61,9 +62,15 @@ const Footer = () => {
         <div className="pt-8 border-t border-border flex flex-col md:flex-row items-center justify-between gap-4">
           <p className="font-body text-xs text-muted-foreground tracking-wider">© 2026 OBSQURA. All rights reserved.</p>
           <div className="flex items-center gap-8">
-            {["Privacy Policy", "Terms of Service", "Shipping"].map(link => <a key={link} href="#" className="font-body text-xs text-muted-foreground hover:text-primary transition-colors duration-300">
-                {link}
-              </a>)}
+            <Link to="/privacy-policy" className="font-body text-xs text-muted-foreground hover:text-primary transition-colors duration-300">
+              Privacy Policy
+            </Link>
+            <Link to="/terms-of-service" className="font-body text-xs text-muted-foreground hover:text-primary transition-colors duration-300">
+              Terms of Service
+            </Link>
+            <Link to="/shipping" className="font-body text-xs text-muted-foreground hover:text-primary transition-colors duration-300">
+              Shipping
+            </Link>
           </div>
         </div>
       </div>
