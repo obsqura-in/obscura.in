@@ -43,6 +43,7 @@ const Navigation = () => {
       ? [] 
       : [{ name: "Login", href: "/login" }]
     ),
+    { name: "AI Mode", href: "/ai-mode" },
     { name: "Collections", href: "#collections", onClick: handleCollectionsClick },
     { name: "Contact", href: "/contact" },
     { name: "Jewellery Care Guide", href: "/jewellery-care" },
