@@ -16,6 +16,7 @@ import TermsOfService from "./pages/TermsOfService";
 import Shipping from "./pages/Shipping";
 import OurStory from "./pages/OurStory";
 import Checkout from "./pages/Checkout";
+import AIMode from "./pages/AIMode";
 import NotFound from "./pages/NotFound";
 
 const ScrollToTop = () => {
@@ -50,6 +51,7 @@ const App = () => (
               <Route path="/shipping" element={<Shipping />} />
               <Route path="/our-story" element={<OurStory />} />
               <Route path="/checkout" element={<Checkout />} />
+              <Route path="/ai-mode" element={<AIMode />} />
               {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
               <Route path="*" element={<NotFound />} />
             </Routes>
