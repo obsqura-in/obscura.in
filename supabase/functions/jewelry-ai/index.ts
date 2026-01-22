@@ -18,31 +18,25 @@ serve(async (req) => {
       throw new Error("LOVABLE_API_KEY is not configured");
     }
 
-    const systemPrompt = `You are OBSQURA's personal jewelry stylist AI. You help customers discover the perfect jewelry pieces based on their preferences, style, occasions, and personality.
+    const systemPrompt = `You are OBSQURA's AI jewelry stylist. Based on the user's preferences, style, occasion, and personality, you recommend jewelry products.
 
-Your personality:
-- Warm, elegant, and knowledgeable about jewelry
-- You speak with sophistication but remain approachable
-- You understand fashion, personal style, and how jewelry complements different looks
+IMPORTANT: You MUST use the recommend_products function to provide recommendations. Never respond with plain text.
 
-When helping customers:
-1. Ask about their style preferences (minimalist, bold, classic, modern, bohemian, etc.)
-2. Consider the occasion (daily wear, special events, gifting, etc.)
-3. Understand their metal preferences (gold, silver, rose gold)
-4. Consider their budget range if mentioned
-5. Think about their skin tone and what metals/stones complement them
+Available product categories and their items:
+- rings: Eternal Promise Ring, Celestial Band, Midnight Signet, Rose Petal Ring
+- necklaces: Moonlight Pendant, Golden Cascade, Starfall Chain, Empress Collar
+- earrings: Diamond Drops, Pearl Studs, Cascade Hoops, Celestial Dangles
+- bracelets: Golden Cuff, Tennis Bracelet, Charm Chain, Minimalist Bangle
+- sets: Bridal Collection, Evening Elegance Set, Everyday Essentials, Royal Suite
+- specials: Limited Edition Aurora, Vintage Revival, Custom Signature, Artisan Series
 
-Based on their responses, recommend specific jewelry types from our collections:
-- Rings: Statement rings, delicate bands, stackable rings
-- Necklaces: Chokers, pendants, layered chains, statement pieces
-- Earrings: Studs, hoops, drops, statement earrings
-- Bracelets: Cuffs, chains, bangles, charm bracelets
-- Sets: Coordinated jewelry sets for complete looks
-- Specials: Limited edition and unique pieces
+When recommending:
+1. Consider the user's style (minimalist, bold, classic, modern, bohemian)
+2. Consider the occasion (daily wear, special events, gifting, wedding)
+3. Consider metal preferences if mentioned
+4. Match 3-6 products that fit their needs
 
-Always provide thoughtful, personalized recommendations with descriptions of why each piece would suit them. Format your responses beautifully with clear sections. Use elegant language befitting a luxury jewelry brand.
-
-If they're unsure, guide them with questions about their lifestyle, wardrobe colors, and what makes them feel confident.`;
+Always provide a brief reason why each product suits them.`;
 
     const response = await fetch("https://ai.gateway.lovable.dev/v1/chat/completions", {
       method: "POST",
@@ -56,7 +50,45 @@ If they're unsure, guide them with questions about their lifestyle, wardrobe col
           { role: "system", content: systemPrompt },
           ...messages,
         ],
-        stream: true,
+        tools: [
+          {
+            type: "function",
+            function: {
+              name: "recommend_products",
+              description: "Recommend jewelry products based on user preferences",
+              parameters: {
+                type: "object",
+                properties: {
+                  products: {
+                    type: "array",
+                    items: {
+                      type: "object",
+                      properties: {
+                        name: { type: "string", description: "Product name" },
+                        category: { 
+                          type: "string", 
+                          enum: ["rings", "necklaces", "earrings", "bracelets", "sets", "specials"],
+                          description: "Product category" 
+                        },
+                        price: { type: "number", description: "Price in INR (between 1500 and 8000)" },
+                        reason: { type: "string", description: "Brief reason why this suits the user (max 15 words)" }
+                      },
+                      required: ["name", "category", "price", "reason"],
+                      additionalProperties: false
+                    }
+                  },
+                  styling_tip: { 
+                    type: "string", 
+                    description: "A brief styling tip for the recommended pieces (max 20 words)" 
+                  }
+                },
+                required: ["products", "styling_tip"],
+                additionalProperties: false
+              }
+            }
+          }
+        ],
+        tool_choice: { type: "function", function: { name: "recommend_products" } },
       }),
     });
 
@@ -81,8 +113,21 @@ If they're unsure, guide them with questions about their lifestyle, wardrobe col
       });
     }
 
-    return new Response(response.body, {
-      headers: { ...corsHeaders, "Content-Type": "text/event-stream" },
+    const data = await response.json();
+    console.log("AI response:", JSON.stringify(data, null, 2));
+
+    // Extract the tool call arguments
+    const toolCall = data.choices?.[0]?.message?.tool_calls?.[0];
+    if (toolCall && toolCall.function?.arguments) {
+      const recommendations = JSON.parse(toolCall.function.arguments);
+      return new Response(JSON.stringify({ recommendations }), {
+        headers: { ...corsHeaders, "Content-Type": "application/json" },
+      });
+    }
+
+    return new Response(JSON.stringify({ error: "No recommendations generated" }), {
+      status: 500,
+      headers: { ...corsHeaders, "Content-Type": "application/json" },
     });
   } catch (error) {
     console.error("jewelry-ai error:", error);
