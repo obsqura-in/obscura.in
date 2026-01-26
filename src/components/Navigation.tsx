@@ -41,7 +41,7 @@ const Navigation = () => {
 
   const navLinks = [
     ...(user 
-      ? [] 
+      ? [{ name: "Profile", href: "/profile" }] 
       : [{ name: "Login", href: "/login" }]
     ),
     { name: "AI Mode", href: "/ai-mode" },
